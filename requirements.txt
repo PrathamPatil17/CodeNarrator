@@ -14,3 +14,5 @@ moviepy>=1.0.3
 pillow<12.0,>=10.0.0
 pygame>=2.5.0
 Pygments>=2.15.0
+numpy>=1.24.0
+playwright>=1.50.0
