@@ -17,13 +17,17 @@ export async function generateText(repoUrl: string, clean: boolean = false, lang
 }
 
 export async function generateVideo(
-    repoUrl: string,
+    repoUrl?: string | null,
     options: { voice?: string; style?: string; project_name?: string } = {}
 ) {
+    const payload = repoUrl
+        ? { repo_url: repoUrl, ...options }
+        : { ...options };
+
     const res = await fetch(`${API_BASE}/api/generate/video`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ repo_url: repoUrl, ...options }),
+        body: JSON.stringify(payload),
     });
     if (!res.ok) throw new Error("Failed to start video generation");
     return res.json();

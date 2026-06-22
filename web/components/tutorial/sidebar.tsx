@@ -82,7 +82,6 @@ export function TutorialSidebar({
   }, [videoJobId, videoStatus, projectName])
 
   const handleGenerateVideo = async () => {
-    if (!repoUrl) return
     setVideoError(null)
     savePrefs({ voice, style: vidStyle })
     try {
@@ -260,11 +259,10 @@ export function TutorialSidebar({
                     ))}
                   </div>
                   {!repoUrl && (
-                    <p className="text-[10px] text-amber-400">Repo URL not detected from index.md</p>
+                    <p className="text-[10px] text-amber-400">Using saved project artifacts for video.</p>
                   )}
                   <button
                     onClick={handleGenerateVideo}
-                    disabled={!repoUrl}
                     className="w-full rounded-xl bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-warm)] py-2.5 text-xs font-bold text-[#05050a] disabled:opacity-40 hover:brightness-110 transition-all"
                   >
                     Generate →
